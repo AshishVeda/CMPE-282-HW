@@ -1,0 +1,21 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - aws --version
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/u0t4o1i1/cloud-services
+      - REPOSITORY_URI=public.ecr.aws/u0t4o1i1/cloud-services
+      
+  build:
+    commands:
+      - docker build -t cloudrepo -f Dockerfile .
+      - docker tag cloudrepo:latest public.ecr.aws/u0t4o1i1/cloud-services
+  post_build:
+    commands:
+      - docker push public.ecr.aws/u0t4o1i1/cloudrepo:latest
+      - echo '[{"name":"'$IMAGE_CONTAINER_NAME'"}]' > imagedefinitions.json
+artifacts:
+  files: 
+      - imagedefinitions.json
+      - appspec.yml
+      - deploy.sh
