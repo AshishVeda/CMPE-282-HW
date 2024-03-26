@@ -5,7 +5,7 @@ CONTAINER_NAME="cloudServices"
 
 # Replace these variables with your actual values
 AWS_REGION="us-east-2"
-ECR_REPO_URI="public.ecr.aws/u0t4o1i1/cloudrepo:latest"
+ECR_REPO_URI="public.ecr.aws/u0t4o1i1/cloud-services:latest"
 
 # Stop the existing Docker container if it's running
 if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then

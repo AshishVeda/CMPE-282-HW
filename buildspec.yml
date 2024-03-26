@@ -8,11 +8,11 @@ phases:
       
   build:
     commands:
-      - docker build -t cloudrepo -f Dockerfile .
-      - docker tag cloudrepo:latest public.ecr.aws/u0t4o1i1/cloud-services
+      - docker build -t cloud-services -f Dockerfile .
+      - docker tag cloud-services:latest public.ecr.aws/u0t4o1i1/cloud-services
   post_build:
     commands:
-      - docker push public.ecr.aws/u0t4o1i1/cloudrepo:latest
+      - docker push public.ecr.aws/u0t4o1i1/cloud-services:latest
       - echo '[{"name":"'$IMAGE_CONTAINER_NAME'"}]' > imagedefinitions.json
 artifacts:
   files: 
