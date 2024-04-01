@@ -24,4 +24,4 @@ fi
 docker pull $ECR_REPO_URI:latest
 
 # Run the new Docker container with the static name
-docker run -d --name $CONTAINER_NAME -p 8080:8080 $ECR_REPO_URI:latest
+docker run -d --name $CONTAINER_NAME -p 8000:8000 $ECR_REPO_URI:latest
